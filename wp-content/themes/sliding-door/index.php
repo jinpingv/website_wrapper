@@ -30,11 +30,7 @@
 	<?php while (have_posts()) : the_post(); ?>
 		<div class="post" id="post-<?php the_ID(); ?>">
 		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-            <!-- <h2><a href="<?php the_content_as_url() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2> -->
-			<!-- <p><?php the_content('Continue Reading...'); ?> -->
-			<iframe src ="<?php the_content_as_url(); ?>" width="400" height="300">
-              <p>Your browser does not support iframes.</p>
-            </iframe>
+			    <p><?php the_content('Continue Reading...'); ?> 
             <div class="post-details"> <h3>Posted <?php $elixir->timesince() ?> ago at <?php the_time() ?>. </p><a href="<?php the_permalink() ?>#comments"><?php comments_number('Add a comment','1 comment','% comments'); ?></a></h3></div>
 			</p>
 		</div>
