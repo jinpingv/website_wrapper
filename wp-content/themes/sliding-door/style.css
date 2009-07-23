@@ -1,0 +1,528 @@
+/*  
+Theme Name: Sliding Door
+Theme URI: http://mac-host.com/slidingdoor/
+Description:A unique template featuring dynamic sliding images in the header based on phatfusion imagemenu. When clicked the images take you to a category or page. Great for blogs with graphical content based around categories such as a photography or travel blog. The theme has a comprehensive support forum to help you get started at http://mac-host.com/support 
+Version: 1.7.1
+Author: Wayne Connor
+Author URI: http://www.macintoshhowto.com/
+Tags: black, fixed-width, custom-header, photoblogging, dark, left-sidebar
+
+*/
+
+
+
+* { margin: 0; padding: 0; list-style: none; }
+
+body {
+	text-align: center;
+	color: #fff;
+	font-family: "Lucida Grande",Tahoma,"Lucida Sans Unicode",Verdana,sans-serif;
+	background-color: #000;
+}
+
+body a {
+		color: #42adfb;
+}
+
+
+#upperBar {
+	height: 0px;
+	background: #01bcff;
+}
+
+#wrapper {
+width: 940px;
+margin: 0 auto;
+text-align: left;
+	position: relative;
+}    
+
+#welcomeheading a {
+	margin-bottom: 10px;
+	padding-bottom: 15px;
+	font: 40pt "Trebuchet MS", "Lucida Grande", Lucida, Vernada, sans-serif;
+	padding-top: 10px;
+	color: #fff;
+	text-decoration: none;
+}
+
+#welcomeheading {
+		text-align: center;
+}
+
+#welcomeheading a:hover {
+	color: #ddd;
+
+}
+
+#middleword {
+	color: #909090;
+}
+
+#welcomeheading a:hover #middleword {
+	color: #fff;
+}
+ 
+ 
+.description {
+	text-align: center;
+			font: normal 14px Verdana, Helvetica, Sans-serif;
+	color: #fff;
+	padding-bottom: 5px;
+	padding-top: 10px;
+}  
+
+                
+#content {
+	float: right;
+	width: 640px;
+	margin-top: 0px;
+}
+
+	#content .notice p {
+		border-top: 1px solid #bbb;
+		border-bottom: 1px solid #bbb;
+		padding: 5px 0px;
+		font-size: 12px;
+	margin: 1px;
+}
+		#content .notice {
+
+	margin-bottom: 20px;
+}
+
+    #content .post {
+				float: left;
+		position: relative;
+		width: 640px;
+		margin-bottom: 30px;
+	padding-top: 10px;
+}
+	
+	#content .post h2 a {
+	color: #FFF;
+	text-decoration: none;
+	
+	padding: 3px 0;
+	font-size: 24px;
+	font-weight: bold;
+}
+
+	#content .post h2 a:hover {
+		color: #D5F3FF;
+	}
+	
+	#content .post h3 {
+		font-size: 12px;
+		font-weight: normal;
+		color: #999;
+			margin-bottom: 0px;
+	margin-top: 5px
+
+}
+
+ #content .post-details {
+
+}
+
+ #content .prevnext {
+	margin-top: 20px;
+	font: normal 13px/20px Verdana, Helvetica, Sans-serif;
+
+	
+}	
+	#content .post h3 a {
+		color: #999;
+	}              
+	
+	#content .post h3 a:hover {
+		text-decoration: none;
+	}
+	
+	#content .post img {
+	max-width: 500px;
+	max-height: 600px;
+	margin-bottom: 10px;
+	margin-top: 10px;
+
+}     
+
+
+.aligncenter,
+div.aligncenter {
+   display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.alignleft {
+   float: left;
+}
+
+.alignright {
+   float: right;
+}
+
+
+.wp-caption {
+   border: 1px solid #ddd;
+   text-align: center;
+   background-color: #f3f3f3;
+   padding-top: 4px;
+   margin: 10px;
+   /* optional rounded corners for browsers that support it */
+   -moz-border-radius: 3px;
+   -khtml-border-radius: 3px;
+   -webkit-border-radius: 3px;
+   border-radius: 3px;
+}
+
+.wp-caption img {
+   margin: 0;
+   padding: 0;
+   border: 0 none;
+}
+
+#content p.wp-caption-text  
+   {
+   font-size: 11px;
+   line-height: 17px;
+
+   margin: 10px;
+	color: #000;
+	text-align: center;
+}
+	
+	#content .post a img {
+	}
+		
+	#content .post ul {
+		margin-left: 20px !important;
+	}
+	
+	#content .post ul li {
+		list-style-type: disc !important;
+	}
+	
+	#content p,
+	#content .post ul li {
+		font: normal 13px/20px Verdana, Helvetica, Sans-serif;
+		margin-bottom: 10px;
+		margin-top: 10px;
+	color: #eaeaea;
+	margin-right: 0px;
+	text-align: justify;
+}
+	
+	#content blockquote {
+	margin-left: 10px;
+	border-left: 3px solid #555;
+	padding-left: 10px;
+	font-style: italic;
+}
+	
+	#content p a {
+		color: #42adfb;
+	}
+	
+	#content p a:hover {
+		text-decoration: none;
+	} 
+	
+	#content small {
+	    margin: 0 auto;
+	    text-align: center;
+	    display: block;
+	    border-top: 3px solid #333;
+	    border-bottom: 1px solid #333;
+	    font-size: 11px;
+	    color: #999;
+	}
+	
+	#content ol {
+	line-height: 1.6;
+}
+	#content ol.commentlist {
+		margin-top: 10px;
+	}
+	
+	#content ol.commentlist li {
+		border-top: 1px solid #333;
+		margin-bottom: 10px;
+	} 
+	
+		#content ol.commentlist li .commentMeta {
+			width: 120px;
+			float: left;
+			margin-top: 5px;
+		} 
+		
+		    #content ol.commentlist li .commentMeta span {
+				display: block;
+			}
+			
+			#content ol.commentlist li .commentMeta span.author,
+			#content ol.commentlist li .commentMeta span.author a {
+				color: #CCC;    
+				text-decoration: none;
+				margin-bottom: 5px;
+			}                     
+			
+			#content ol.commentlist li .commentMeta span.date a {
+				color: #666;
+				text-decoration: none;
+				font-size: 11px;
+			}
+
+			#content ol.commentlist li .commentMeta span.moderate a {
+				color: #42adfb;
+			}
+		
+		#content ol.commentlist li .commentText {
+			width: 450px;
+			float: right;
+			padding: 5px;
+			font-size: 12px;
+		}
+	
+	
+	#content ol.commentlist .avatar {
+float: left;
+}
+
+
+	#content h3 {
+		color: #42adfb;
+
+	}
+	
+	#content #commentform input {
+		padding: 5px;
+		font-family: Arial, Helvetica, Sans-serif;
+	}
+	
+	#content #commentform textarea {
+		width: 410px;
+		padding: 10px;
+		font-family: Arial, Helvetica, Sans-serif;
+	}
+	
+	#content .nextprevious {
+		height: 40px;
+		display: block;
+	} 
+	
+	#content .nextprevious a {
+		color: #CCC;
+	}               
+	
+	#content .nextprevious .left {
+		float: left;
+	}              
+	
+	#content .nextprevious .right {
+		float: right;
+	}
+	
+	#content .adBrite {
+		display: block;
+		margin-bottom: 20px;
+		border: 1px solid #333;
+	}
+
+#sidebar {
+	width: 232px;
+	float: none;
+	padding-top: 8px;
+	text-align: left;
+} 
+
+#sitemeter {
+	text-align: center;
+	width: 160px;
+		font-size: 11px;
+		color: #999;
+}
+#sitemeter img{
+	padding-bottom: 8px;
+	padding-top: 8px;
+}
+
+	#sidebar h2 {
+		font-weight: normal;
+		font-size: 16px;
+		text-transform: uppercase;
+		margin-bottom: 10px;
+	padding-top: 8px;
+}
+	
+	#sidebar a img {
+		border: none;
+	}
+	
+
+	#sidebar ul {
+		margin-top: 10px;
+		margin-bottom: 10px;
+}
+	
+	#sidebar ul li {
+		font-size: 11px;
+		background: url(img/bullet.png) 0 5px no-repeat;
+		padding: 0 10px;
+		margin: 0 0 5px 5px;
+	}
+	
+	#sidebar ul li a {
+		color: #999;
+		text-decoration: none;
+	}
+	
+	#sidebar ul li span {
+		color: #666;
+		margin-left: 5px;
+	}
+	
+	#sidebar ul li a:hover {
+		color: #CCC;
+	}
+	
+	#sidebar ul#nav {
+		margin: 10px 0 20px 0;
+	}
+	
+	#sidebar ul#nav li {
+		margin: 0;
+		padding: 0;
+	}
+		
+	#sidebar ul#nav li a {
+		display: block;
+		height: 17px;
+		padding: 7px 10px;
+		background: url(img/nav_off.png) 0 0 no-repeat;
+		margin-bottom: 5px;
+		text-decoration: none;
+		font-size: 12px;
+		text-transform: uppercase;
+		font-weight: bold;
+		color: #999;
+	}
+	
+	#sidebar ul#nav li a:hover {
+		background: url(img/nav_off.png) 0 -31px no-repeat;
+	}        
+	
+	#sidebar ul#nav li a.active {
+		background: url(img/nav_on.png) 0 0 no-repeat;
+		color: #FFF;
+	}
+
+
+#footer hr {
+height: 1px;
+
+}
+
+
+#sidebar #footer {
+	border-top: 1px double #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 7px 0 2px;
+    font-size: 11px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+    #sidebar #footer p {
+        margin-bottom: 5px;
+        color: #eee;
+	text-align: center;
+}
+    
+    #sidebar #footer a {
+        color: #999;
+	text-decoration: none;
+}
+    
+    #sidebar #footer a:hover {
+        text-decoration: none;
+        color: #fff;
+    }
+
+.clearfix {
+	clear: both;
+}	
+
+.ctc {
+text-align: center;
+	text-decoration: none;
+	line-height: 80%;
+	background-color: #000;
+	margin-bottom: 10px;
+	padding-right: 10px;
+	padding-top: 0px;
+	padding-bottom: 10px;
+}	
+
+
+.ctc a {
+	text-decoration: none;
+	text-transform: lowercase;
+	font-family: "Lucida Grande",Tahoma,"Lucida Sans Unicode",Verdana,sans-serif;
+	margin: 4px;
+	border: thin none #060606;
+}
+.ctc a:hover{
+	color: #fff;
+	margin: 3px;
+	border: thin solid #8acef3;
+	background-color: #0c0c0c;
+}
+
+[disabled] {
+
+	color:#dddddd;
+
+	border-color:#dddddd!important;
+
+	background:none!important;
+
+}
+
+ #upperBox {
+	margin-bottom: 10px;
+	text-align: center;
+	position: absolute;
+	right: 0;
+	padding-top: 5px;
+}
+	
+ #upperBox a img {
+		display: block;
+		margin: 0 auto;
+		border: none;
+	}
+	
+
+	 #upperBox p {
+		margin: 5px 0;
+		font-size: 10px;
+		text-align: center;
+	}
+	
+	 #upperBox input {
+		height: 18px;
+		padding: 5px 5px 5px 25px;
+		background: url(img/upperBox_search.png) top left no-repeat;
+		border: 0;
+		width: 100px;
+		color: #9ec7eb;
+		margin-top: 5px;
+	}
+	
+	 #upperBox input:focus {
+		color: #FFF;
+	}
+
+

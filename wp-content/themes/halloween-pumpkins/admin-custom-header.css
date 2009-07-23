@@ -1,0 +1,55 @@
+/* HalloweenPumpkin */
+
+.wrap form {
+	width:90%;
+	margin: 10px auto;
+}
+.wrap #uploadForm input {
+	color:#000;
+}
+.wrap form input,.wrap #uploadForm .submit input {
+	background:#21759B url(../images/button-grad.png) repeat-x scroll left top;
+	border-color:#298CBA;
+	color:#fff;
+}
+.wrap input[type="button"]:hover,.wrap input[type="submit"]:hover {
+	color:#82FF05;
+}
+
+#headimg  {
+	height:170px;
+	background-color:#000;
+	background-repeat:no-repeat;
+}
+#headimg h1 {
+	height:150px;
+}
+#headimg h1 {
+	margin:0;
+	padding:5px 5px 0 0;
+	font-weight:normal;
+	font-size:1.8em;
+	letter-spacing:.1em;
+	text-align:right;
+	color:#FDBC0A;
+}
+#headimg a {
+	margin:0;
+	padding:0;
+	text-decoration:none;
+}
+#headimg a:hover,#headimg a:active,#headimg a:focus {
+	cursor:default;
+}
+#headimg #desc {
+	position:relative;
+	top:-120px;
+	left:-5px;
+	margin:0;
+	padding:0;
+	font-size:1.1em;
+	text-align:right;
+	font-weight:bold;
+	color:#FDBC0A;
+}
+

@@ -1,0 +1,32 @@
+/* 
+Theme Name: Halloween Pumpkins
+Version: 1.2
+Theme URI: http://www.quirm.net/
+Author: Mel Pedley
+Author URI: http://www.bitesizesites.co.uk/
+Description: A Halloween theme in orange, yellow and black with a horizontal page navigation menu. Sticky post titles are highlighted in the second horizontal navigation menu with categories, archives and links listed in the single vertical menu. All menus are widget-ready and a custom widget-ready page template is also included. Header customisation available via the WordPress Admin interface along with an option to toggle sticky post display on the front page. Compatible with WordPress 2.7 and above. Support available at <a href="http://forum.quirm.net">Quirm.net</a>. 
+Tags: dark, black, orange, yellow, two-columns, threaded-comments, custom-header, theme-options, right-sidebar, sticky-post, seasonal
+
+Distributed under the terms of the GNU General Public License\n
+*/
+
+@import url(common.css);
+@import url(layout.css);
+@import url(color.css);
+
+/* ignore these classes - they're just here to satisfy the wordpress.org upload
+They are appropriately specified in common.css - but the wordpress.org uploader doesn't appear to be able to deal with imported css sheets.
+.aligncenter {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+*/
