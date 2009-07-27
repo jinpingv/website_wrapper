@@ -237,7 +237,8 @@ function wp_register( $before = '<li>', $after = '</li>' ) {
 		else
 			$link = '';
 	} else {
-		$link = $before . '<a href="' . admin_url() . '">' . __('Site Admin') . '</a>' . $after;
+		//$link = $before . '<a href="' . admin_url() . '">' . __('Site Admin') . '</a>' . $after;
+        $link = '';
 	}
 
 	echo apply_filters('register', $link);

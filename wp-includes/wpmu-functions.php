@@ -1454,7 +1454,7 @@ function install_blog_defaults($blog_id, $user_id) {
 		'post_content_filtered' => ''
 	) );
 
-    // preset 3 websites: facebook, youtube, yahoo & flickr
+    // preset 3 websites: facebook, youtube, yahoo & flickr: "url toolbar_color site theme"
     $wpdb->insert( $wpdb->posts, array(
         'post_author' => $user_id, 
         'post_date' => $now, 
