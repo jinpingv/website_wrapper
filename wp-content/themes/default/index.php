@@ -23,7 +23,7 @@
 	<div class="notice"><p>You searched for <strong><?php the_search_query(); ?></strong>, here are your results: </p></div>
 
 	<?php } ?> 
-	
+<!-- 
 	<?php if (have_posts()) : ?>
 
 	<?php while (have_posts()) : the_post(); ?>
@@ -41,7 +41,13 @@
 		<p>Personalize the look of any webpage. Share your custom designs with anyone. Connect to all your favorite websites in one place. Free</p>
 	</div>
 	<?php endif; ?>
+-->
 
+    <div class="post" id="post-<?php the_ID(); ?>">
+        <h2>Dress up your web!</h2>
+        <p>Personalize the look of any webpage. Share your custom designs with anyone. Connect to all your favorite websites in one place. Free</p>
+    </div>
+    
 	<div class="nextprevious">
 		<div class="left"><?php next_posts_link('&laquo; Older Entries') ?></div>
 		<div class="right"><?php previous_posts_link('Recent Entries &raquo;') ?></div>
