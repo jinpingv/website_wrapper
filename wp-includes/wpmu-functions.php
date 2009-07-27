@@ -1192,7 +1192,7 @@ function wpmu_activate_signup($key) {
 	wpmu_welcome_notification($blog_id, $user_id, $password, $signup->title, $meta);
 
 	do_action('wpmu_activate_blog', $blog_id, $user_id, $password, $signup->title, $meta);
-
+    
 	return array('blog_id' => $blog_id, 'user_id' => $user_id, 'password' => $password, 'title' => $signup->title, 'meta' => $meta);
 }
 
@@ -1435,7 +1435,7 @@ function install_blog_defaults($blog_id, $user_id) {
 	) );	
 	$wpdb->insert( $wpdb->term_relationships, array('object_id' => 1, 'term_taxonomy_id' => 1));
 	update_option( "post_count", 1 );
-
+    
 	// First page
 	$wpdb->insert( $wpdb->posts, array(
 		'post_author' => $user_id, 
@@ -1453,7 +1453,59 @@ function install_blog_defaults($blog_id, $user_id) {
 		'pinged' => '',
 		'post_content_filtered' => ''
 	) );
-	
+
+    // preset 3 websites: facebook, youtube and flickr
+    $wpdb->insert( $wpdb->posts, array(
+        'post_author' => $user_id, 
+        'post_date' => $now, 
+        'post_date_gmt' => $now_gmt,
+        'post_content' => __('http://www.facebook.com'), 
+        'post_excerpt' => '', 
+        'post_title' => __('Facebook'),
+        'post_name' => __('facebook'),
+        'post_modified' => $now,
+        'post_modified_gmt' => $now_gmt,
+        'post_status' => 'publish',
+        //'post_type' => 'post',
+        'to_ping' => '',
+        'pinged' => '',
+        'post_content_filtered' => ''
+    ) );    
+
+    $wpdb->insert( $wpdb->posts, array(
+        'post_author' => $user_id, 
+        'post_date' => $now, 
+        'post_date_gmt' => $now_gmt,
+        'post_content' => __('http://www.flickr.com'), 
+        'post_excerpt' => '', 
+        'post_title' => __('Flickr'),
+        'post_name' => __('flickr'),
+        'post_modified' => $now,
+        'post_modified_gmt' => $now_gmt,
+        'post_status' => 'publish',
+        //'post_type' => 'post',
+        'to_ping' => '',
+        'pinged' => '',
+        'post_content_filtered' => ''
+    ) );  
+    
+    $wpdb->insert( $wpdb->posts, array(
+        'post_author' => $user_id, 
+        'post_date' => $now, 
+        'post_date_gmt' => $now_gmt,
+        'post_content' => __('http://www.youtube.com'), 
+        'post_excerpt' => '', 
+        'post_title' => __('YouTube'),
+        'post_name' => __('youtube'),
+        'post_modified' => $now,
+        'post_modified_gmt' => $now_gmt,
+        'post_status' => 'publish',
+        //'post_type' => 'post',
+        'to_ping' => '',
+        'pinged' => '',
+        'post_content_filtered' => ''
+    ) );  
+            	
 	// Flush rules to pick up the new page.
 	$wp_rewrite->init();
 	$wp_rewrite->flush_rules();
