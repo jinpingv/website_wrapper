@@ -1454,12 +1454,12 @@ function install_blog_defaults($blog_id, $user_id) {
 		'post_content_filtered' => ''
 	) );
 
-    // preset 3 websites: facebook, youtube and flickr
+    // preset 3 websites: facebook, youtube, yahoo & flickr
     $wpdb->insert( $wpdb->posts, array(
         'post_author' => $user_id, 
         'post_date' => $now, 
         'post_date_gmt' => $now_gmt,
-        'post_content' => __('http://www.facebook.com'), 
+        'post_content' => __('http://www.facebook.com 0 0 0'), 
         'post_excerpt' => '', 
         'post_title' => __('Facebook'),
         'post_name' => __('facebook'),
@@ -1476,7 +1476,7 @@ function install_blog_defaults($blog_id, $user_id) {
         'post_author' => $user_id, 
         'post_date' => $now, 
         'post_date_gmt' => $now_gmt,
-        'post_content' => __('http://www.flickr.com'), 
+        'post_content' => __('http://www.flickr.com 0 1 0'), 
         'post_excerpt' => '', 
         'post_title' => __('Flickr'),
         'post_name' => __('flickr'),
@@ -1493,7 +1493,7 @@ function install_blog_defaults($blog_id, $user_id) {
         'post_author' => $user_id, 
         'post_date' => $now, 
         'post_date_gmt' => $now_gmt,
-        'post_content' => __('http://www.youtube.com'), 
+        'post_content' => __('http://www.youtube.com 0 2 0'), 
         'post_excerpt' => '', 
         'post_title' => __('YouTube'),
         'post_name' => __('youtube'),
@@ -1505,7 +1505,24 @@ function install_blog_defaults($blog_id, $user_id) {
         'pinged' => '',
         'post_content_filtered' => ''
     ) );  
-            	
+
+    $wpdb->insert( $wpdb->posts, array(
+        'post_author' => $user_id, 
+        'post_date' => $now, 
+        'post_date_gmt' => $now_gmt,
+        'post_content' => __('http://www.yahoo.com 0 2 0'), 
+        'post_excerpt' => '', 
+        'post_title' => __('Yahoo'),
+        'post_name' => __('yahoo'),
+        'post_modified' => $now,
+        'post_modified_gmt' => $now_gmt,
+        'post_status' => 'publish',
+        //'post_type' => 'post',
+        'to_ping' => '',
+        'pinged' => '',
+        'post_content_filtered' => ''
+    ) );  
+                	
 	// Flush rules to pick up the new page.
 	$wp_rewrite->init();
 	$wp_rewrite->flush_rules();

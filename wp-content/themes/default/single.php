@@ -34,7 +34,21 @@ body {
  
 <script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js" ></script> 
 
+
 <?php $url = get_stylesheet_directory_uri()?>
+
+<?php
+    if (have_posts()) {
+        the_post();
+    }
+    $post_id=get_the_ID();
+    
+    $theme_str = get_post($post_id)->post_content;
+    sscanf($theme_str,"%s %d %d %d",$site_url, $tbcl,$site_id,$theme_id);
+
+?> 
+
+
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>/skinee.css">
 
         <title>Skinee</title>
@@ -42,11 +56,15 @@ body {
     <body class="yui-skin-sam" onresize="resize_all();">
 <script type="text/javascript"> 
     //    "contentready" event handler for the "menubuttonsfrommarkup" <fieldset>
- 
+    
+// alert("id:"+<?php echo $post_id.$site_url.$tbcl.$site_id.$theme_id;?>);
+
     YAHOO.util.Event.onContentReady("menubuttonsfrommarkup", function () {
         var theme = [ "Electric-Acid", "Paint-Splash", "popdellic" ];
-        var site = [    { name: "facebook",            URL: "http://facebook.com",            icon: "facebook-logo.png" },
-                                    { name: "flickr",            URL: "http://flickr.com",            icon: "flickr-logo.png" }];
+        var site = [ { name: "facebook", URL: "http://facebook.com",  icon: "facebook-logo.png" },
+                     { name: "flickr",  URL: "http://flickr.com",  icon: "flickr-logo.png" },
+                     { name: "facebook", URL: "http://youtube.com",  icon: "youtube_logo.png" },
+                     { name: "yahoo", URL: "http://yahoo.com",  icon: "yahoo-logo.png" }];
         var tbcolor = [ { name: "pink", color: "rgb(255, 0, 204)" },
                                     { name: "red", color: "rgb(236, 32, 36)" },
                                     { name: "purple", color: "rgb(102, 0, 153)" },
@@ -65,15 +83,16 @@ body {
         
         // init site
         setSite = function(idx) {
+            site_id=idx;
             document.getElementById("iframeMain").src=site[idx].URL;
         }
         
         // init site menu
-        for(var i = 0; i < 2; i++) {
+        for(var i = 0; i < 4; i++) {
             document.getElementById('siteBox' + i).src = '<?php echo $url; ?>/logos/' + site[i].icon;
             YAHOO.util.Event.addListener('siteBox' + i, 'click', function(p_oEvent, idx) { setSite(idx); }, i);
         }
-        setSite(0);
+        setSite(<?php echo $site_id;?>);
         
         // init theme
         setTheme = function(idx) {
@@ -85,9 +104,7 @@ body {
         // init theme menu
         for(var i = 0; i < 3; i++) {
             YAHOO.util.Dom.setStyle('themeBox' + i, 'backgroundImage', 'url(<?php echo $url; ?>/themes/' + theme[i] + '/' + theme[i] + '.png)')
-            YAHOO.util.Event.addListener('themeBox' + i, 'click', function(p_oEvent, idx) {
-                        setTheme(idx);
-                    }, i);
+            YAHOO.util.Event.addListener('themeBox' + i, 'click', function(p_oEvent, idx) { setTheme(idx); }, i);
         }        
         setTheme(skineeData.theme);
         
@@ -99,10 +116,11 @@ body {
         
         for(var i = 0; i < 9; i++) {
             YAHOO.util.Dom.setStyle('colorBox' + i, 'backgroundColor', tbcolor[i].color);
-            YAHOO.util.Event.addListener('colorBox' + i, 'click', function(p_oEvent, idx) { setTBColor(idx); }, i);
+            YAHOO.util.Event.addListener('colorBox' + i, 'click', 
+                function(p_oEvent, idx) { setTBColor(idx); }, i);
         }
         
-        setTBColor(skineeData.toolbarColor);
+        setTBColor(0);
  
         //    Create a Button using an existing <input> and <select> element.
         //    Because the "type" attribute of the <input> element was set to 
@@ -161,7 +179,19 @@ body {
         var oBtnCancel = new YAHOO.widget.Button("btnCancel");
         
         onBtnSaveClick = function(evt) {
-            alert('clicked');
+         
+            <?php 
+                // Update post
+                    
+                //  $my_post = array();
+                //  $my_post['ID'] = $post_id;
+                //  $my_post['post_content'] = $site_url." ".$tbcl." ".$site_id." ".$theme_id;
+
+                // Update the post into the database
+                //  wp_update_post( $my_post );
+            ?>
+            
+            alert('New theme for site ' + document.getElementById("iframeMain").src + ' saved');
         };
         
         oBtnSave.on('click', onBtnSaveClick);
@@ -219,6 +249,8 @@ body {
 		    	<div>
 		    		<div class="siteBox"><img id="siteBox0"></div>
 		    		<div class="siteBox"><img id="siteBox1"></div>
+                    <div class="siteBox"><img id="siteBox2"></div>
+                    <div class="siteBox"><img id="siteBox3"></div>
 		    	</div>
 		    </div> 
 		</div>
