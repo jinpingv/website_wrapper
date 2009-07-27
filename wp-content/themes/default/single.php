@@ -1,73 +1,278 @@
-<?php
-/**
- * @package WordPress
- * @subpackage Default_Theme
- */
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		
+<style type="text/css"> 
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+	margin:0;
+	padding:0;
+}
+</style> 
+ 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/button/assets/skins/sam/button.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/skins/sam/colorpicker.css"> 
 
-get_header();
-?>
+<script src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo-min.js"></script> 
+<script src="http://yui.yahooapis.com/2.7.0/build/dom/dom-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container_core-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/button/button-min.js"></script> 
 
-	<div id="content" class="widecolumn" role="main">
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/utilities/utilities.js" ></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js" ></script> 
+ 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js" ></script> 
 
-	<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+<?php $url = get_stylesheet_directory_uri()?>
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>/skinee.css">
 
-		<div class="navigation">
-			<div class="alignleft"><?php previous_post_link('&laquo; %link') ?></div>
-			<div class="alignright"><?php next_post_link('%link &raquo;') ?></div>
+        <title>Skinee</title>
+    </head>
+    <body class="yui-skin-sam" onresize="resize_all();">
+<script type="text/javascript"> 
+    //    "contentready" event handler for the "menubuttonsfrommarkup" <fieldset>
+ 
+    YAHOO.util.Event.onContentReady("menubuttonsfrommarkup", function () {
+        var theme = [ "Electric-Acid", "Paint-Splash", "popdellic" ];
+        var site = [    { name: "facebook",            URL: "http://facebook.com",            icon: "facebook-logo.png" },
+                                    { name: "flickr",            URL: "http://flickr.com",            icon: "flickr-logo.png" }];
+        var tbcolor = [ { name: "pink", color: "rgb(255, 0, 204)" },
+                                    { name: "red", color: "rgb(236, 32, 36)" },
+                                    { name: "purple", color: "rgb(102, 0, 153)" },
+                                    { name: "blue", color: "rgb(51, 102, 255)" },
+                                    { name: "light_blue", color: "rgb(0, 0, 127)" },
+                                    { name: "green", color: "rgb(0, 204, 51)" },
+                                    { name: "yellow", color: "rgb(255, 204, 0)" },
+                                    { name: "grey", color: "rgb(153, 153, 153)" },
+                                    { name: "black", color: "rgb(35, 31, 32)" }];
+                                      
+        var skineeData = {
+            toolbarColor : 0,
+            site : 0,
+            theme : 0
+        };
+        
+        // init site
+        setSite = function(idx) {
+            document.getElementById("iframeMain").src=site[idx].URL;
+        }
+        
+        // init site menu
+        for(var i = 0; i < 2; i++) {
+            document.getElementById('siteBox' + i).src = '<?php echo $url; ?>/logos/' + site[i].icon;
+            YAHOO.util.Event.addListener('siteBox' + i, 'click', function(p_oEvent, idx) { setSite(idx); }, i);
+        }
+        setSite(0);
+        
+        // init theme
+        setTheme = function(idx) {
+                for(var j = 1; j <= 5; j++) {
+                    YAHOO.util.Dom.setStyle('div' + j, 'backgroundImage', 'url(<?php echo $url; ?>/themes/' + theme[idx] + '/' + theme[idx] + '_0' + j + '.png)');
+                }
+        };
+
+        // init theme menu
+        for(var i = 0; i < 3; i++) {
+            YAHOO.util.Dom.setStyle('themeBox' + i, 'backgroundImage', 'url(<?php echo $url; ?>/themes/' + theme[i] + '/' + theme[i] + '.png)')
+            YAHOO.util.Event.addListener('themeBox' + i, 'click', function(p_oEvent, idx) {
+                        setTheme(idx);
+                    }, i);
+        }        
+        setTheme(skineeData.theme);
+        
+        // init toolbar color
+        setTBColor = function(idx) {
+            document.getElementById('skinee-logo').src = '<?php echo $url; ?>/assets/toolbar/' + tbcolor[idx].name + '_03.png';
+            YAHOO.util.Dom.setStyle("toolbar", "backgroundImage", 'url(<?php echo $url; ?>/assets/toolbar/' + tbcolor[idx].name + '_02.png)' );
+        }
+        
+        for(var i = 0; i < 9; i++) {
+            YAHOO.util.Dom.setStyle('colorBox' + i, 'backgroundColor', tbcolor[i].color);
+            YAHOO.util.Event.addListener('colorBox' + i, 'click', function(p_oEvent, idx) { setTBColor(idx); }, i);
+        }
+        
+        setTBColor(skineeData.toolbarColor);
+ 
+        //    Create a Button using an existing <input> and <select> element.
+        //    Because the "type" attribute of the <input> element was set to 
+        //    "submit" - clicking on any MenuItem in the Button's Menu will
+        //    automatically submit the Button's parent <form>.
+ 
+        
+ 
+        //    "submit" event handler for the <form>
+ 
+        var onExampleSubmit = function(p_oEvent) {
+ 
+            var bSubmit = 
+                    window.confirm("Are you sure you want to submit the form?");
+ 
+            if(!bSubmit) {
+                YAHOO.util.Event.preventDefault(p_oEvent);
+            }
+ 
+        };
+ 
+ 
+        //    Add a "submit" event handler to the <form> to confirm that 
+        //    clicking on one of the MenuItems in the Button's Menu 
+        //    submits the <form>.
+ 
+        YAHOO.util.Event.on("button-example-form", "submit", onExampleSubmit);
+ 
+ 
+ 
+ 
+        //    Create a Button using an existing <input> element and a 
+        //    YAHOO.widget.Overlay instance as its menu
+ 
+        var oMenuButton3 = new YAHOO.widget.Button("btnURL", 
+                                { type: "menu", menu: "menuURL" });
+
+        var oBtnTheme = new YAHOO.widget.Button("btnTheme",
+                    { type: "menu", menu: "menuTheme" });
+        var oBtnTBColor = new YAHOO.widget.Button("btnTBColor",
+                    { type: "menu", menu: "menuTBColor" });
+
+        // use pre defined colors                    
+        //var oColorPicker = new YAHOO.widget.ColorPicker("ColorPicker",
+        //            { showhexcontrols: false,
+        //                images : {
+        //                    PICKER_THUMB: "assets/picker_thumb.png",
+        //                    HUE_THUMB: "assets/hue_thumb.png" }});
+                            
+        //oColorPicker.on("rgbChange", function (p_oEvent) {
+        //    var sColor = "#" + this.get("hex");
+        //    YAHOO.util.Dom.setStyle("toolbar", "backgroundColor", sColor);
+        //})
+        
+        var oBtnSave = new YAHOO.widget.Button("btnSave");
+        var oBtnCancel = new YAHOO.widget.Button("btnCancel");
+        
+        onBtnSaveClick = function(evt) {
+            alert('clicked');
+        };
+        
+        oBtnSave.on('click', onBtnSaveClick);
+        
+        resize_all();
+    });
+ 
+ function resize_all() {
+     //alert("resize");
+  var winWidth = 0, winHeight = 0;
+  if( typeof( window.innerWidth ) == 'number' ) {
+    //Non-IE
+    winWidth = window.innerWidth;
+    winHeight = window.innerHeight;
+  } else if( document.documentElement && ( document.documentElement.clientWidth || document.documentElement.clientHeight ) ) {
+    //IE 6+ in 'standards compliant mode'
+    winWidth = document.documentElement.clientWidth;
+    winHeight = document.documentElement.clientHeight;
+  } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+    //IE 4 compatible
+    winWidth = document.body.clientWidth;
+    winHeight = document.body.clientHeight;
+  }
+  //window.alert( 'Width = ' + winWidth );
+  //window.alert( 'Height = ' + winHeight );
+
+    var iframeWidth = 1024;
+    var sideWidth = (winWidth - iframeWidth)/2;
+    if(sideWidth <= 50) {
+        sideWidth = 50;
+    }
+    var toolbarMargin = (winWidth - 1200) / 2;
+    if(toolbarMargin < 0)
+        toolbarMargin = 0;
+        
+    YAHOO.util.Dom.setStyle('wholepage', 'width', winWidth.toString() + "px");
+    YAHOO.util.Dom.setStyle('toolbar', 'width', winWidth.toString() + "px");
+    YAHOO.util.Dom.setStyle('divframe', 'width', winWidth.toString() + "px");
+    YAHOO.util.Dom.setStyle('div1', 'width', sideWidth.toString() + "px");
+    YAHOO.util.Dom.setStyle('divIframe', 'left', sideWidth.toString() + "px");
+    YAHOO.util.Dom.setStyle('div5', 'width', sideWidth.toString() + "px");
+    YAHOO.util.Dom.setStyle('div5', 'left', (iframeWidth + sideWidth).toString() + "px");
+    YAHOO.util.Dom.setStyle('skinee-logo', 'margin-left', toolbarMargin.toString() + "px");
+}
+ </script> 
+
+<div id="wholepage"> 
+<div id="toolbar">
+<form id="button-example-form" name="button-example-form" method="post" style="background-color:transparent"> 
+	<div style="float:left"><img id="skinee-logo"></div>
+	<div id="menubuttonsfrommarkup" style="background-color:transparent">
+		<input type="button" id="btnURL" name="btnURL_button" value="URL"> 
+		<div id="menuURL" class="yui-overlay"> 
+		    <div class="bd">
+		    	<div>
+		    		<div class="siteBox"><img id="siteBox0"></div>
+		    		<div class="siteBox"><img id="siteBox1"></div>
+		    	</div>
+		    </div> 
 		</div>
 
-		<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-			<h2><?php the_title(); ?></h2>
-
-			<div class="entry">
-				<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
-
-				<?php wp_link_pages(array('before' => '<p><strong>Pages:</strong> ', 'after' => '</p>', 'next_or_number' => 'number')); ?>
-				<?php the_tags( '<p>Tags: ', ', ', '</p>'); ?>
-
-				<p class="postmetadata alt">
-					<small>
-						This entry was posted
-						<?php /* This is commented, because it requires a little adjusting sometimes.
-							You'll need to download this plugin, and follow the instructions:
-							http://binarybonsai.com/wordpress/time-since/ */
-							/* $entry_datetime = abs(strtotime($post->post_date) - (60*120)); echo time_since($entry_datetime); echo ' ago'; */ ?>
-						on <?php the_time('l, F jS, Y') ?> at <?php the_time() ?>
-						and is filed under <?php the_category(', ') ?>.
-						You can follow any responses to this entry through the <?php post_comments_feed_link('RSS 2.0'); ?> feed.
-
-						<?php if ( comments_open() && pings_open() ) {
-							// Both Comments and Pings are open ?>
-							You can <a href="#respond">leave a response</a>, or <a href="<?php trackback_url(); ?>" rel="trackback">trackback</a> from your own site.
-
-						<?php } elseif ( !comments_open() && pings_open() ) {
-							// Only Pings are Open ?>
-							Responses are currently closed, but you can <a href="<?php trackback_url(); ?> " rel="trackback">trackback</a> from your own site.
-
-						<?php } elseif ( comments_open() && !pings_open() ) {
-							// Comments are open, Pings are not ?>
-							You can skip to the end and leave a response. Pinging is currently not allowed.
-
-						<?php } elseif ( !comments_open() && !pings_open() ) {
-							// Neither Comments, nor Pings are open ?>
-							Both comments and pings are currently closed.
-
-						<?php } edit_post_link('Edit this entry','','.'); ?>
-
-					</small>
-				</p>
-
+		<input type="button" id="btnTheme" name="btnTheme_button" value="Theme">
+		<div id="menuTheme" class="yui-overlay">
+			<div>
+				<div class="themeBox" id="themeBox0"></div>
+				<div class="themeBox" id="themeBox1"></div>
+			</div>
+			<div>
+				<div class="themeBox" id="themeBox2"></div>
+				<div class="themeBox" id="themeBox3" style="background-color:#FF0000"></div>
 			</div>
 		</div>
+		
+		<input type="button" id="btnTBColor" name="btnTBColor" value="Toolbar Color">
+		<div id="menuTBColor" class="yui-overlay">
+			<div class="bd">
+				<div>
+					<div class="colorBox" id="colorBox0"></div>
+					<div class="colorBox" id="colorBox1"></div>
+					<div class="colorBox" id="colorBox2"></div>
+				</div>
+				<div>
+					<div class="colorBox" id="colorBox3"></div>
+					<div class="colorBox" id="colorBox4"></div>
+					<div class="colorBox" id="colorBox5"></div>
+				</div>
+				<div>
+					<div class="colorBox" id="colorBox6"></div>
+					<div class="colorBox" id="colorBox7"></div>
+					<div class="colorBox" id="colorBox8"></div>
+				</div>								
+			</div>
+		</div>	
+		
+		<input type="button" id="btnSave" name="btnSave" value="">
+		<input type="button" id="btnCancel" name="btnCancel" value="">
+	</div>       
+</form> 
+</div>
 
-	<?php comments_template(); ?>
-
-	<?php endwhile; else: ?>
-
-		<p>Sorry, no posts matched your criteria.</p>
-
-<?php endif; ?>
-
+<div id="divframe">
+	<div id="div1"></div>
+	<div id="divIframe">
+		<div id="div2"></div>
+		<div id="div3"></div>
+		<div id="div4"></div>		
+		<iframe id="iframeMain" src=""></iframe>
 	</div>
+	<div id="div5"></div>
+</div>
 
-<?php get_footer(); ?>
+</div>
+    </body>
+</html>

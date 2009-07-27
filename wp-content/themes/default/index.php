@@ -1,45 +1,54 @@
-<?php
-/**
- * @package WordPress
- * @subpackage Default_Theme
- */
 
-get_header(); ?>
+<?php get_header();  ?>
 
-	<div id="content" class="narrowcolumn" role="main">
 
+
+<div id="content">
+
+
+		
+	<?php /* If this is a category archive */  if (is_category()) { ?>
+	<div class="notice"><p>You are currently browsing the <?php single_cat_title(''); ?> category.</p></div>
+
+	<?php /* If this is a yearly archive */ } elseif (is_day()) { ?>
+	<div class="notice"><p>You are currently browsing the archives for the day <?php the_time('l, F jS, Y'); ?>.</p></div>
+
+	<?php /* If this is a monthly archive */ } elseif (is_month()) { ?>
+	<div class="notice"><p>You are currently browsing the archives for <?php the_time('F, Y'); ?>.</p></div>
+
+	<?php /* If this is a yearly archive */ } elseif (is_year()) { ?>
+	<div class="notice"><p>You are currently browsing the archives for the year <?php the_time('Y'); ?>.</p></div>
+
+	<?php /* If this is a monthly archive */ } elseif (is_search()) { ?>
+	<div class="notice"><p>You searched for <strong><?php the_search_query(); ?></strong>, here are your results: </p></div>
+
+	<?php } ?> 
+	
 	<?php if (have_posts()) : ?>
 
-		<?php while (have_posts()) : the_post(); ?>
-
-			<div <?php post_class() ?> id="post-<?php the_ID(); ?>">
-				<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
-				<small><?php the_time('F jS, Y') ?>  by <?php the_author() ?></small>
-
-				<div class="entry">
-					<?php the_content('Read the rest of this entry &raquo;'); ?>
-				</div>
-
-				<p class="postmetadata"><?php the_tags('Tags: ', ', ', '<br />'); ?> Posted in <?php the_category(', ') ?> | <?php edit_post_link('Edit', '', ' | '); ?>  <?php comments_popup_link('No Comments &#187;', '1 Comment &#187;', '% Comments &#187;'); ?></p>
-			</div>
-
-		<?php endwhile; ?>
-
-		<div class="navigation">
-			<div class="alignleft"><?php next_posts_link('&laquo; Older Entries') ?></div>
-			<div class="alignright"><?php previous_posts_link('Newer Entries &raquo;') ?></div>
+	<?php while (have_posts()) : the_post(); ?>
+		<div class="post" id="post-<?php the_ID(); ?>">
+		    <h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
+			    <p><?php the_content('Continue Reading...'); ?> 
+            <div class="post-details"> <h3>Posted <?php $elixir->timesince() ?> ago at <?php the_time() ?>. </p><a href="<?php the_permalink() ?>#comments"><?php comments_number('Add a comment','1 comment','% comments'); ?></a></h3></div>
+			</p>
 		</div>
-
+	<?php endwhile; ?>
+    
 	<?php else : ?>
-
-		<h2 class="center">Not Found</h2>
-		<p class="center">Sorry, but you are looking for something that isn't here.</p>
-		<?php get_search_form(); ?>
-
+	<div class="post" id="post-<?php the_ID(); ?>">
+		<h2>Dress up your web!</h2>
+		<p>Personalize the look of any webpage. Share your custom designs with anyone. Connect to all your favorite websites in one place. Free</p>
+	</div>
 	<?php endif; ?>
 
+	<div class="nextprevious">
+		<div class="left"><?php next_posts_link('&laquo; Older Entries') ?></div>
+		<div class="right"><?php previous_posts_link('Recent Entries &raquo;') ?></div>
 	</div>
-
+	<div class="clear"></div>
+</div>
+                     
 <?php get_sidebar(); ?>
 
 <?php get_footer(); ?>

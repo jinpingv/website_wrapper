@@ -1,17 +1,13 @@
-<?php
-/**
- * @package WordPress
- * @subpackage Default_Theme
- */
-
-get_header();
-?>
-
-	<div id="content" class="narrowcolumn">
-
-		<h2 class="center">Error 404 - Not Found</h2>
-
-	</div>
+<?php get_header(); ?>
+<div id="content" class="page">
+		<div class="post" id="post-<?php the_ID(); ?>">
+			<h2>Sorry!</h2>
+			<h3>We can't seem to find what you're looking for!</h3>
+			
+			<p>The link you just followed was broken. <a href="/">Head back home.</a></p>
+			
+		</div>  
+</div>
 
 <?php get_sidebar(); ?>
 

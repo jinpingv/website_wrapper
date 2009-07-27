@@ -123,6 +123,15 @@ switch( $_GET['action'] ) {
 		}
 
 		// Update more options here
+        /*
+        $default_theme = 'default';
+        if(get_theme('sliding-door'))
+        {
+        $default_theme = 'sliding-door';
+        }
+        update_option('template', $default_theme);
+        update_option('stylesheet', $default_theme);
+        */
 		do_action( 'update_wpmu_options' );
 
 		wp_redirect( add_query_arg( "updated", "true", $_SERVER['HTTP_REFERER'] ) );
