@@ -49,10 +49,10 @@
 			<ul>
 				<!-- THESE AR ETHE LINKS YOU GO TO WHEN YOU CLICK ON A SLIDING DOOR IMAGE-->
 				<!-- change the href to look like this: <a href="yourlink.com">     -->
-				<li class="bk1"><a href="<?php bloginfo('url'); ?>/?p=2">Website 1</a></li>
-				<li class="bk2"><a href="<?php bloginfo('url'); ?>/?p=3">Website 2</a></li>
-				<li class="bk3"><a href="<?php bloginfo('url'); ?>/?p=4">Website 3</a></li>
-				<li class="bk4"><a href="<?php bloginfo('url'); ?>/?p=5">Website 4</a></li>  
+				<li class="bk1"><a href="<?php bloginfo('url'); ?>/?p=3">Website 1</a></li>
+				<li class="bk2"><a href="<?php bloginfo('url'); ?>/?p=4">Website 2</a></li>
+				<li class="bk3"><a href="<?php bloginfo('url'); ?>/?p=5">Website 3</a></li>
+				<li class="bk4"><a href="<?php bloginfo('url'); ?>/?p=6">Website 4</a></li>  
 				<!--<li class="bk5"><a href="<?php bloginfo('url'); ?>/?cat=5">Category 5</a></li>-->    
 				<!-- <li class="bk6"><a href="<?php bloginfo('url'); ?>/?cat=6">Category 6</a></li>-->  
 				<!-- <li class="bk7"><a href="<?php bloginfo('url'); ?>/?cat=7">Category 7</a></li> -->  
