@@ -17,23 +17,23 @@
  *
  * @package WordPress
  */
-
+ 
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'wpmu');
-
+ 
 /** MySQL database username */
 define('DB_USER', 'wpmu');
-
+ 
 /** MySQL database password */
 define('DB_PASSWORD', 'wpmu');
-
+ 
 /** MySQL hostname */
 define('DB_HOST', 'localhost');
-
+ 
 /** Database Charset to use in creating database tables. */
 define('DB_CHARSET', 'utf8');
-
+ 
 /** The Database Collate type. Don't change this if in doubt. */
 define('DB_COLLATE', '');
 define('VHOST', 'no'); 
@@ -42,7 +42,7 @@ define('DOMAIN_CURRENT_SITE', 'localhost.domain' );
 define('PATH_CURRENT_SITE', '/wpmu/' );
 define('SITE_ID_CURRENT_SITE', 1);
 define('BLOGID_CURRENT_SITE', '1' );
-
+ 
 /**#@+
  * Authentication Unique Keys.
  *
@@ -60,7 +60,7 @@ define('AUTH_SALT', '94737517672d9fdfdaa6da271a9396a3b378b9e99b371a5cdca5fd5fbf0
 define('LOGGED_IN_SALT', 'b033eea3ebaad784b21deb8dd9ba46ee78484160214c44d90a0bca64ab299df0');
 define('SECURE_AUTH_SALT', '46f21a7d1c5d28e43886890fc572d7ba9b0b8ce795f7afb658c9f17f35d6d820');
 /**#@-*/
-
+ 
 /**
  * WordPress Database Table prefix.
  *
@@ -68,7 +68,7 @@ define('SECURE_AUTH_SALT', '46f21a7d1c5d28e43886890fc572d7ba9b0b8ce795f7afb658c9
  * prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix  = 'wp_';
-
+ 
 /**
  * WordPress Localized Language, defaults to English.
  *
@@ -78,36 +78,36 @@ $table_prefix  = 'wp_';
  * language support.
  */
 define ('WPLANG', '');
-
+ 
 // double check $base
 if( $base == 'BASE' )
 	die( 'Problem in wp-config.php - $base is set to BASE when it should be the path like "/" or "/blogs/"! Please fix it!' );
-
+ 
 // uncomment this to enable wp-content/sunrise.php support
 //define( 'SUNRISE', 'on' );
-
+ 
 // uncomment to move wp-content/blogs.dir to another relative path
 // remember to change WP_CONTENT too.
 // define( "UPLOADBLOGSDIR", "fileserver" );
-
+ 
 // If VHOST is 'yes' uncomment and set this to a URL to redirect if a blog does not exist or is a 404 on the main blog. (Useful if signup is disabled)
 // For example, the browser will redirect to http://examples.com/ for the following: define( 'NOBLOGREDIRECT', 'http://example.com/' );
 // Set this value to %siteurl% to redirect to the root of the site
 // define( 'NOBLOGREDIRECT', '' );
 // On a directory based install you must use the theme 404 handler.
-
+ 
 // Location of mu-plugins
 // define( 'WPMU_PLUGIN_DIR', '' );
 // define( 'WPMU_PLUGIN_URL', '' );
 // define( 'MUPLUGINDIR', 'wp-content/mu-plugins' );
-
+ 
 define( "WP_USE_MULTIPLE_DB", false );
-
+ 
 /* That's all, stop editing! Happy blogging. */
-
+ 
 /** WordPress absolute path to the Wordpress directory. */
 if ( !defined('ABSPATH') )
 	define('ABSPATH', dirname(__FILE__) . '/');
-
+ 
 /** Sets up WordPress vars and included files. */
 require_once(ABSPATH . 'wp-settings.php');
