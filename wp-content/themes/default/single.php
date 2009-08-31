@@ -46,7 +46,7 @@ body {
 ?> 
 
 
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>/skinee.css">
+<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $url; ?>/skinee_single.css">
         <title>Skinee</title>
     </head>
     <body class="yui-skin-sam" onresize="resize_all();">

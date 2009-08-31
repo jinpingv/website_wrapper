@@ -1,0 +1,187 @@
+ 
+    /*
+        Set the "zoom" property to "normal" since it is set to "1" by the 
+        ".example-container .bd" rule in yui.css and this causes a Menu
+        instance's width to expand to 100% of the browser viewport.
+    */
+    
+    div.yuimenu .bd {
+    
+        zoom: normal;
+    
+    }
+ 
+        #wholepage {
+            position: absolute;
+            width: 1700px;
+            height: 5000px;
+            top: 0px;
+            left: 0px;
+        }
+        
+        #toolbar {
+            position: absolute;
+            width: 1700px;
+            height: 75px;
+            top: 0px;
+            left: 0px;
+            z-index: 50
+        }
+ 
+    #menuURL,
+    #menuTheme,
+    #menuTBColor {
+    
+        position: absolute;
+        visibility: hidden;
+        border: solid 1px #000;
+        padding: .5em;
+        background-color: #ccc;
+        z-index: 100;
+    
+    }
+    
+    #menuTheme {
+        width: 405px;
+        height: 335px;
+    }
+    
+    .themeBox {
+        width: 200px;
+        height: 165px;
+        float: left;
+    }
+    
+    #menuURL {
+            
+    }
+    
+    .siteBox {
+        float: left;
+    }
+    
+    .colorBox {
+        width: 50px;
+        height: 50px;
+        float: left;
+    }
+    
+    .yui-skin-sam .yui-button {
+        border-style: none
+    }
+    
+    .yui-skin-sam .yui-button .first-child {
+        border-style: none
+    }
+    
+    #btnURL, #btnTheme, #btnTBColor {
+        height: 38px;
+    }
+    
+    .yui-skin-sam #btnSave.yui-button,
+    .yui-skin-sam #btnCancel.yui-button {
+        background-image: none;
+        border-style: none;
+    }
+    
+    #btnSave {
+        margin-left: 480px;
+    }
+    
+    #btnSave.yui-button button {
+        background: url(assets/save-changes-button-normal.png);
+        width: 157px;
+        height: 38px;
+        border-style: none
+    }
+    
+    #btnSave.yui-button-hover button {
+        background: url(assets/save-changes-button-roll.png);
+    }
+    
+    #btnSave.yui-button-active button {
+        background: url(assets/save-changes-button-press.png);     
+    }
+    
+    #btnCancel.yui-button button {
+        background: url(assets/cancel-button-normal.png);
+        width: 95px;
+        height: 38px;
+        border-style: none
+    }
+    
+    #btnCancel.yui-button-hover button {
+        background: url(assets/cancel-button-roll.png);
+    }
+    
+    #btnCancel.yui-button-active button {
+        background: url(assets/cancel-button-press.png);     
+    }
+    
+    #divframe {
+        position: absolute;
+        width: 1700px;
+        height: 5000px;
+        top: 33px;
+        left: 0px;
+    }
+    
+    #divframe iframe {
+        width: 100%;
+        height: 100%;
+    }
+    
+    #div1,#div5 {
+        position: absolute;
+        width: 338px;
+        height: 5000px;
+    }
+    
+    #div1 {
+        top: 0px;
+        left: 0px;
+    }
+    
+    #div5 {
+        top: 0px;
+        left: 1362px;
+    }
+    
+    #divIframe {
+        position: absolute;
+        width: 1024px;
+        height: 5000px;
+        top: 0px;
+        left: 338px;
+    }
+  
+      #div2, #div3, #div4 {
+        position: absolute;          
+          z-index: 10;
+      }
+        
+    #div2 {
+        width: 65px;
+        height: 5000px;
+        left: 0px;
+        top: 0px;
+    }
+    
+    #div4 {
+        width: 65px;
+        height: 5000px;
+        left: 959px;
+        top: 0px;
+    }
+    
+    #div3 {
+        width: 894px;
+        height: 25px;
+        left: 65px;
+        top: 0px;
+    }
+    
+    #div1, #div2, #div4, #div5 {
+        background-repeat: repeat-xy;
+    }
+ 

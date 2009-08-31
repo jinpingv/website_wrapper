@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        
+<style type="text/css"> 
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+    margin:0;
+    padding:0;
+}
+</style> 
+
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/button/assets/skins/sam/button.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/skins/sam/colorpicker.css"> 
+
+<script src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo-min.js"></script> 
+<script src="http://yui.yahooapis.com/2.7.0/build/dom/dom-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container_core-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/button/button-min.js"></script> 
+
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/utilities/utilities.js" ></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js" ></script> 
+ 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js" ></script> 
+<?php $url = get_stylesheet_directory_uri()?>  
+<style type="text/css"> 
+ 
+    /*
+        Set the "zoom" property to "normal" since it is set to "1" by the 
+        ".example-container .bd" rule in yui.css and this causes a Menu
+        instance's width to expand to 100% of the browser viewport.
+    */
+    
+    body {
+        color: #666666;
+    }
+    
+    div.yuimenu .bd {
+    
+        zoom: normal;
+    
+    }
+    
+    /* main building blocks */
+    #fullpage {
+        width: 100%
+    }
+    
+    #mainpage {
+        width: 1080px;
+        height: 100%;
+        margin: 0px auto;
+    }
+    
+        #toolbar {
+            width: 100%;
+            height: 75px;
+            z-index: 50;
+        }   
+        
+        #purple {
+            width: 100%;
+            height: 265px;
+            margin-top: -40px;
+            background-image: url(<?php echo $url; ?>/assets/purple-fade.png);
+        }
+        
+        #sample-box {
+            width: 100%;
+            margin-top: -170px;
+            z-index: 5;
+        }
+        
+        #sample {
+            margin-left: 35px;
+        } 
+        
+        #blue {
+            margin-top: -81px;
+            background-image: url(<?php echo $url; ?>/assets/blue-background.gif);
+            padding-top: 90px;
+            padding-bottom: 130px;
+        }
+        
+        /* toolbar */
+        #menubuttonsfrommarkup {
+            float: left;
+            height: 75px;
+            width: 934px;
+            background-image: url(<?php echo $url; ?>/assets/toolbar/light_blue_02.png);
+        } 
+    .yui-skin-sam .yui-button {
+        border-style: none
+    }
+    
+    .yui-skin-sam .yui-button .first-child {
+        border-style: none
+    }        
+    
+    #toolbar .yui-button {
+        height: 35px;
+        background-image: none;        
+    }
+    
+    .yui-skin-sam #toolbar .yui-button button {
+        height: 35px;
+        font-family: Arial;
+        font-style: bold;
+        font-size: 20px;
+        background-image: none;
+        color: #666666;
+    }
+    
+    .yui-skin-sam #toolbar .yui-push-button-hover button {
+        color: #FF0000;
+    }
+    
+    .yui-skin-sam #toolbar .yui-push-button-active button {
+        color: #000099;
+    }
+    
+    #how {
+        margin-left: 470px;
+    }
+                
+        /* msg */
+        #message {
+            font-family: Arial;
+            font-size: 18px;
+            color: #FFFFFF;
+            text-indent: 20px;
+            padding-top: 30px;
+        }
+        
+        /* login */
+        #login-box {
+            width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            
+            background-image: url(<?php echo $url; ?>/assets/Signup-box-color.png);
+            
+            border: 1px solid;
+            border-color: #666666;
+        }
+        
+        #login-box .label {
+            color: #666666
+            font-family: Arial;
+            font-size: 19px;
+            margin-top: 8px;
+        }
+        
+        .login-input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 8px;
+            font-family: Arial;
+            font-size: 30px;        
+            color: #666666;    
+            background: #FFFFFF;
+            border: solid 1px rgb(127, 157, 185)
+        }
+        
+        #real-url {
+            border: none;
+            margin-left: -0.2em;
+        }
+        
+        #loginbutton {
+            color: #666666;
+            background: none;
+            border: none;
+        }
+        
+        #loginbutton button {
+            width: 310px;
+            height: 50px;
+            background: url(<?php echo $url; ?>/assets/SignUp-Button-normal.png);
+        }
+        
+        #loginbutton.yui-button-hover button {
+            background: url(<?php echo $url; ?>/assets/SignUp-Button-roll.png);
+        }
+        
+        #loginbutton.yui-button-active button {
+            background: url(<?php echo $url; ?>/assets/SignUp-Button-down.png);
+        }        
+        
+</style>
+</head>
+
+<body class="yui-skin-sam">
+
+<script type="text/javascript"> 
+ 
+    //    "contentready" event handler for the "menubuttonsfrommarkup" <fieldset>
+ 
+    YAHOO.util.Event.onContentReady("menubuttonsfrommarkup", function () {
+        var oBtnHow = new YAHOO.widget.Button("how");
+        var oBtnPopular = new YAHOO.widget.Button("popular");
+        var oBtnSignup = new YAHOO.widget.Button("signup");
+        var oBtnLogin = new YAHOO.widget.Button("login");
+        var oBtnSignup = new YAHOO.widget.Button("loginbutton");
+    });
+</script>             
+<div id="fullpage">
+    <div id="mainpage">
+        <div id="toolbar">
+        <form id="button-example-form" name="button-example-form" method="post"> 
+            <div style="float:left"><img id="skinee-logo" src="<?php echo $url; ?>/assets/toolbar/light_blue_03.png"></div>
+            <div id="menubuttonsfrommarkup">
+                <input type="button" id="how" value="How It Works">
+                <input type="button" id="popular" value="Popular">
+                <input type="button" id="signup" value="Sign Up">
+                <input type="button" id="login" value="Log In">
+            </div>
+        </form>
+        </div>
+        
+        <div id="purple">
+            <div id="message"><b>Personalize</b> the look of any webpage. <b>Share</b> your custom designs with anyone. <b>Connect</b> to all your favorite websites in one place.</div>
+        </div>
+        <div id="sample-box"><img id="sample" src="<?php echo $url; ?>/assets/sample.png"></div>
+        <div id="blue">
+            <div id="login-box">
+                <div class="label">Email Address</div>
+                <input class="login-input" type="text">
+                <div class="label">Password</div>
+                <input class="login-input" type="text">
+                <div class="label">URL</div>
+                <div class="login-input mimic-input">
+                    <span style="color:#CCCCCC">www.skinee.com/</span>
+                    <input id="real-url" type="text" maxlength="24" size="26">
+                </div>
+                <div style="text-align:center">
+                    <input id="loginbutton" type="button" value="">
+                </div> 
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

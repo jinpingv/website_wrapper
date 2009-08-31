@@ -30,23 +30,9 @@ if( $current_blog->domain . $current_blog->path != $current_site->domain . $curr
 function wpmu_signup_stylesheet() {
 	?>
 	<style type="text/css">	
-		.mu_register {  
-            width: 720px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #666666;
-            padding-left: 20px;
-            padding-right: 20px;
-            padding-top: 8px;
-            padding-bottom: 8px;
-            
-            background-image: url(<?php $url = get_stylesheet_directory_uri(); echo $url; ?>/assets/Signup-box-color.png);
-            
-            border: 1px solid;
-            border-color: #666666;
-        }
+		.mu_register { width: 90%; margin:0 auto; }
 		.mu_register form { margin-top: 2em; }
-		.mu_register .error { font-weight:700; padding:10px; color:#666666; background:#FFEBE8; border:1px solid #CC0000; }
+		.mu_register .error { font-weight:700; padding:10px; color:#333333; background:#FFEBE8; border:1px solid #CC0000; }
 		.mu_register #submit,
 			.mu_register #blog_title,
 			.mu_register #user_email, 
@@ -54,14 +40,9 @@ function wpmu_signup_stylesheet() {
 			.mu_register #user_name { width:100%; font-size: 24px; margin:5px 0; }	
 		.mu_register .prefix_address,
 			.mu_register .suffix_address {font-size: 18px;display:inline; }			
-		.mu_register label { 
-            color: #666666;
-            font-family: Arial;
-            font-size: 19px;
-            margin-top: 8px; 
-        }
+		.mu_register label { font-weight:700; font-size:15px; display:block; margin:10px 0; }
 		.mu_register label.checkbox { display:inline; }
-		.mu_register .mu_alert { font-weight:700; padding:10px; color:#666666; background:#ffffe0; border:1px solid #e6db55; }
+		.mu_register .mu_alert { font-weight:700; padding:10px; color:#333333; background:#ffffe0; border:1px solid #e6db55; }
 	</style>
 	<?php
 }
@@ -69,7 +50,7 @@ function wpmu_signup_stylesheet() {
 add_action( 'wp_head', 'wpmu_signup_stylesheet' );
 get_header();
 ?>
-
+<div id="content" class="widecolumn">
 <div class="mu_register">
 <?php
 function show_blog_form($blogname = '', $blog_title = '', $errors = '') {
@@ -142,7 +123,6 @@ function show_user_form($user_name = '', $user_email = '', $errors = '') {
 	}
 	echo '<input name="user_name" type="text" id="user_name" value="'.$user_name.'" maxlength="50" /><br />';
 	_e('(Must be at least 4 characters, letters and numbers only.)');
-    echo '<br /><br />'
 	?>
 
 	<label for="user_email"><?php _e('Email&nbsp;Address:') ?></label>
@@ -265,11 +245,19 @@ function signup_user($user_name = '', $user_email = '', $errors = '') {
 		<?php show_user_form($user_name, $user_email, $errors); ?>
 		
 		<p>
-
+		<?php if( $active_signup == 'blog' ) { ?>
 			<input id="signupblog" type="hidden" name="signup_for" value="blog" />
-
+		<?php } elseif( $active_signup == 'user' ) { ?>
+			<input id="signupblog" type="hidden" name="signup_for" value="user" />
+		<?php } else { ?>
+			<input id="signupblog" type="radio" name="signup_for" value="blog" <?php echo $signup['blog'] ?> />
+			<label class="checkbox" for="signupblog"><?php _e('Gimme a blog!') ?></label>	
+			<br />			
+			<input id="signupuser" type="radio" name="signup_for" value="user" <?php echo $signup['user'] ?> />			
+			<label class="checkbox" for="signupuser"><?php _e('Just a username, please.') ?></label>
+		<?php } ?>
 		</p>
-		<br />
+		
 		<input id="submit" type="submit" name="submit" class="submit" value="<?php _e('Next &raquo;') ?>" />
 	</form>
 	<?php
@@ -361,11 +349,11 @@ function validate_blog_signup() {
 
 function confirm_blog_signup($domain, $path, $blog_title, $user_name = '', $user_email = '', $meta) {
 	?>
-	<h2><?php printf(__('Congratulations! Your new Skinee account, %s, is almost ready.'), "<a href='http://{$domain}{$path}'>{$blog_title}</a>" ) ?></h2>
+	<h2><?php printf(__('Congratulations! Your new blog, %s, is almost ready.'), "<a href='http://{$domain}{$path}'>{$blog_title}</a>" ) ?></h2>
 	
-	<p><?php _e('But, before you can start using your account, <strong>you must activate it</strong>.') ?></p>
+	<p><?php _e('But, before you can start using your blog, <strong>you must activate it</strong>.') ?></p>
 	<p><?php printf(__('Check your inbox at <strong>%s</strong> and click the link given. It should arrive within 30 minutes.'),  $user_email) ?></p>
-	<p><?php _e('If you do not activate your account within two days, you will have to sign up again.'); ?></p>
+	<p><?php _e('If you do not activate your blog within two days, you will have to sign up again.'); ?></p>
 	<h2><?php _e('Still waiting for your email?'); ?></h2>
 	<p>
 		<?php _e("If you haven't received your email yet, there are a number of things you can do:") ?>
@@ -401,7 +389,7 @@ if( $active_signup == "none" ) {
 		$proto = 'http://';
 	}
 	$login_url = site_url( 'wp-login.php?redirect_to=' . urlencode($proto . $_SERVER['HTTP_HOST'] . '/wp-signup.php' ));
-	echo sprintf( __( "You must first <a href=\"%s\">login</a>, and then you can start using Skinee."), $login_url );
+	echo sprintf( __( "You must first <a href=\"%s\">login</a>, and then you can create a new blog."), $login_url );
 } else {
 	switch ($_POST['stage']) {
 		case 'validate-user-signup' :
@@ -414,7 +402,7 @@ if( $active_signup == "none" ) {
 			if( $active_signup == 'all' || $active_signup == 'blog' )
 				validate_blog_signup();
 			else
-				_e( "Registration has been disabled." );
+				_e( "Blog registration has been disabled." );
 			break;
 		case 'gimmeanotherblog':
 			validate_another_blog_signup();
@@ -437,15 +425,15 @@ if( $active_signup == "none" ) {
 				else
 					$newblog = 'http://' . $newblogname . '.' . $current_site->domain . $current_site->path;
 				if ($active_signup == 'blog' || $active_signup == 'all')
-					printf(__("<p><em>The account you were looking for, <strong>%s</strong> doesn't exist but you can create it now!</em></p>"), $newblog );
+					printf(__("<p><em>The blog you were looking for, <strong>%s</strong> doesn't exist but you can create it now!</em></p>"), $newblog );
 				else
-					printf(__("<p><em>The account you were looking for, <strong>%s</strong> doesn't exist.</em></p>"), $newblog );
+					printf(__("<p><em>The blog you were looking for, <strong>%s</strong> doesn't exist.</em></p>"), $newblog );
 			}
 			break;
 	}
 }
 ?>
-
+</div>
 </div>
 
 <?php get_footer(); ?>

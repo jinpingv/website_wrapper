@@ -1,0 +1,345 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+ 
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> 
+<head> 
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/> 
+    <style type="text/css"> 
+/*margin and padding on body element
+  can introduce errors in determining
+  element position and are not recommended;
+  we turn them off as a foundation for YUI
+  CSS treatments. */
+body {
+    margin:0;
+    padding:0;
+}
+ 
+</style> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/fonts/fonts-min.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/menu/assets/skins/sam/menu.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/button/assets/skins/sam/button.css" /> 
+<link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/2.7.0/build/colorpicker/assets/skins/sam/colorpicker.css"> 
+ 
+<script src="http://yui.yahooapis.com/2.7.0/build/yahoo/yahoo-min.js"></script> 
+<script src="http://yui.yahooapis.com/2.7.0/build/dom/dom-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/yahoo-dom-event/yahoo-dom-event.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/container/container_core-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/menu/menu-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/element/element-min.js"></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/button/button-min.js"></script> 
+ 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/utilities/utilities.js" ></script> 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/slider/slider-min.js" ></script> 
+ 
+<script type="text/javascript" src="http://yui.yahooapis.com/2.7.0/build/colorpicker/colorpicker-min.js" ></script> 
+<style type="text/css"> 
+ 
+    /*
+        Set the "zoom" property to "normal" since it is set to "1" by the 
+        ".example-container .bd" rule in yui.css and this causes a Menu
+        instance's width to expand to 100% of the browser viewport.
+    */
+    
+    body {
+        color: #666666;
+    }
+    
+    div.yuimenu .bd {
+    
+        zoom: normal;
+    
+    }
+    
+    /* main building blocks */
+    #fullpage {
+        width: 100%
+    }
+    
+    #mainpage {
+        width: 1080px;
+        height: 100%;
+        margin: 0px auto;
+    }
+    
+        #toolbar {
+            width: 100%;
+            height: 75px;
+            z-index: 50;
+        }   
+        
+        #purple {
+            width: 100%;
+            height: 265px;
+            margin-top: -40px;
+            background-image: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/purple-fade.png);
+        }
+        
+        #sample-box {
+            width: 100%;
+            margin-top: -170px;
+            z-index: 5;
+        }
+        
+        #sample {
+            margin-left: 35px;
+        } 
+        
+        #blue {
+            margin-top: -81px;
+            background-image: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/blue-background.gif);
+            padding-top: 90px;
+            padding-bottom: 130px;
+        }
+        
+        /* toolbar */
+        #menubuttonsfrommarkup {
+            float: left;
+            height: 75px;
+            width: 934px;
+            background-image: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/toolbar/light_blue_02.png);
+        } 
+    .yui-skin-sam .yui-button {
+        border-style: none
+    }
+    
+    .yui-skin-sam .yui-button .first-child {
+        border-style: none
+    }        
+    
+    #toolbar .yui-button {
+        height: 35px;
+        background-image: none;        
+    }
+    
+    .yui-skin-sam #toolbar .yui-button button {
+        height: 35px;
+        font-family: Arial;
+        font-style: bold;
+        font-size: 20px;
+        background-image: none;
+        color: #666666;
+    }
+    
+    .yui-skin-sam #toolbar .yui-push-button-hover button {
+        color: #FF0000;
+    }
+    
+    .yui-skin-sam #toolbar .yui-push-button-active button {
+        color: #000099;
+    }
+    
+    #how {
+        margin-left: 470px;
+    }
+                
+        /* msg */
+        #message {
+            font-family: Arial;
+            font-size: 18px;
+            color: #FFFFFF;
+            text-indent: 20px;
+            padding-top: 30px;
+        }
+        
+        /* login */
+        #login-box {
+            width: 720px;
+            margin-left: auto;
+            margin-right: auto;
+ 
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-top: 8px;
+            padding-bottom: 8px;
+            
+            background-image: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/Signup-box-color.png);
+            
+            border: 1px solid;
+            border-color: #666666;
+        }
+        
+        #login-box .label {
+            color: #666666;
+            font-family: Arial;
+            font-size: 19px;
+            margin-top: 8px;
+        }
+        
+        .login-input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 8px;
+            font-family: Arial;
+            font-size: 30px;        
+            color: #666666;    
+            background: #FFFFFF;
+            border: solid 1px rgb(127, 157, 185)
+        }
+        
+        #real-url {
+            border: none;
+            margin-left: -0.2em;
+        }
+        
+        #signupbutton {
+            color: #666666;
+            background: none;
+            border: none;
+        }
+        
+        #signupbutton button {
+            width: 310px;
+            height: 50px;
+            background: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/SignUp-Button-normal.png);
+        }
+        
+        #signupbutton.yui-button-hover button {
+            background: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/SignUp-Button-roll.png);
+        }
+        
+        #signupbutton.yui-button-active button {
+            background: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/SignUp-Button-down.png);
+        }
+        
+        #loginbutton {
+            color: #666666;
+            background: none;
+            border: none;
+        }
+        
+        #loginbutton button {
+            width: 310px;
+            height: 50px;
+            background: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/SignUp-Button-normal.png);
+        }
+        
+        #loginbutton.yui-button-hover button {
+            background: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/SignUp-Button-roll.png);
+        }
+        
+        #loginbutton.yui-button-active button {
+            background: url(http://localhost.domain/wpmu/wp-content/themes/default/assets/SignUp-Button-down.png);
+        }        
+        
+</style> 
+    <title>Skinee
+    
+    
+     &raquo; </title> 
+ 
+    <meta name="generator" content="WordPress 2.8.2" /> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />    
+    <link rel="stylesheet" href="http://localhost.domain/wpmu/wp-content/themes/default/style.css" type="text/css" media="screen" /> 
+    <link rel="alternate" type="application/rss+xml" title="Skinee RSS Feed" href="http://localhost.domain/wpmu/feed/" /> 
+    <link rel="pingback" href="http://localhost.domain/wpmu/xmlrpc.php" /> 
+    <link rel='stylesheet' id='wp_sidebarlogin_css_styles-css'  href='http://localhost.domain/wpmu/wp-content/plugins/sidebar-login/style.css?ver=2.8.2' type='text/css' media='all' /> 
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://localhost.domain/wpmu/xmlrpc.php?rsd" /> 
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://localhost.domain/wpmu/wp-includes/wlwmanifest.xml" /> 
+<link rel='index' title='Skinee' href='http://localhost.domain/wpmu' /> 
+<meta name="generator" content="WordPress 2.8.2" /> 
+<meta name='robots' content='noindex,nofollow' /> 
+    <style type="text/css">    
+        .mu_register { width: 90%; margin:0 auto; }
+        .mu_register form { margin-top: 2em; }
+        .mu_register .error { font-weight:700; padding:10px; color:#333333; background:#FFEBE8; border:1px solid #CC0000; }
+        .mu_register #submit,
+            .mu_register #blog_title,
+            .mu_register #user_email, 
+            .mu_register #blogname,
+            .mu_register #user_name { width:100%; font-size: 24px; margin:5px 0; }    
+        .mu_register .prefix_address,
+            .mu_register .suffix_address {font-size: 18px;display:inline; }            
+        .mu_register label { font-weight:700; font-size:15px; display:block; margin:10px 0; }
+        .mu_register label.checkbox { display:inline; }
+        .mu_register .mu_alert { font-weight:700; padding:10px; color:#333333; background:#ffffe0; border:1px solid #e6db55; }
+    </style> 
+    
+    
+</head> 
+ 
+<body class="yui-skin-sam"> 
+ 
+<script type="text/javascript"> 
+ 
+    //    "contentready" event handler for the "menubuttonsfrommarkup" <fieldset>
+ 
+    YAHOO.util.Event.onContentReady("menubuttonsfrommarkup", function () {
+        var oBtnHow = new YAHOO.widget.Button("how");
+        var oBtnPopular = new YAHOO.widget.Button("popular");
+        var oBtnSignup = new YAHOO.widget.Button("signup");
+        var oBtnLogin = new YAHOO.widget.Button("login");
+        var oBtnSignup = new YAHOO.widget.Button("loginbutton");
+        var oBtnSignup = new YAHOO.widget.Button("signupbutton");
+    });
+</script>             
+<div id="fullpage"> 
+    <div id="mainpage"> 
+        <div id="toolbar"> 
+        <form id="button-example-form" name="button-example-form" method="post"> 
+            <div style="float:left"><img id="skinee-logo" src="http://localhost.domain/wpmu/wp-content/themes/default/assets/toolbar/light_blue_03.png"></div> 
+            <div id="menubuttonsfrommarkup"> 
+                <input type="button" id="how" value="How It Works"> 
+                <a href="http://localhost.domain/wpmu/?p=3"><input type="button" id="popular" value="Popular"></a> 
+                <input type="button" id="signup" value="Sign Up"> 
+                <a href="http://localhost.domain/wpmu/wp-login.php?redirect_to=?p=3"><input type="button" id="login" value="Log In" ></a> 
+            </div> 
+        </form> 
+        </div> 
+    
+        <div id="purple"> 
+            <div id="message"><b>Personalize</b> the look of any webpage. <b>Share</b> your custom designs with anyone. <b>Connect</b> to all your favorite websites in one place.</div> 
+        </div> 
+        <div id="sample-box"><img id="sample" src="http://localhost.domain/wpmu/wp-content/themes/default/assets/sample.png"></div> 
+        <div id="blue"> 
+<!--    
+            <div id="login-box">
+                <div class="label">Email Address</div>
+                <input class="login-input" type="text">
+                <div class="label">Password</div>
+                <input class="login-input" type="text">
+                <div class="label">URL</div>
+                <div class="login-input mimic-input">
+                    <span style="color:#CCCCCC">www.skinee.com/</span>
+                    <input id="real-url" type="text" maxlength="24" size="26">
+                </div>
+                <div style="text-align:center">
+                    <input id="loginbutton" type="button" value="">
+                </div>           
+            </div>
+        </div>
+        --> 
+ 
+        
+
+<div class="mu_register"> 
+    
+    <h2>Get your own Skinee account in seconds</h2> 
+    <form id="setupform" method="post" action="wp-signup.php"> 
+        <input type="hidden" name="stage" value="validate-user-signup" /> 
+        <input type='hidden' name='signup_form_id' value='1286032037' /><input type="hidden" id="_signup_form" name="_signup_form" value="b7dfbfd301" />        <label for="user_name">Username:</label><input name="user_name" type="text" id="user_name" value="" maxlength="50" /><br />(Must be at least 4 characters, letters and numbers only.)
+    <label for="user_email">Email&nbsp;Address:</label> 
+            
+    <input name="user_email" type="text" id="user_email" value="" maxlength="200" /><br />(We&#8217;ll send your password to this address, so <strong>triple-check it</strong>.)            
+        <p> 
+                    <input id="signupblog" type="radio" name="signup_for" value="blog" checked="checked" /> 
+            <label class="checkbox" for="signupblog">Gimme a blog!</label>    
+            <br />            
+            <input id="signupuser" type="radio" name="signup_for" value="user"  />            
+            <label class="checkbox" for="signupuser">Just a username, please.</label> 
+                </p> 
+        
+        <input id="submit" type="submit" name="submit" class="submit" value="Next &raquo;" /> 
+    </form> 
+    </div> 
+
+ 
+ 
+ 
+ 
+    </div> 
+    </div> 
+</div> 
+</body> 
+</html>
